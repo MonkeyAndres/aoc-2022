@@ -14,7 +14,7 @@ go test -v ./exercises/dayXX
 
 | Kata                                             | Part 1 | Part 2 |
 | ------------------------------------------------ | ------ | ------ |
-| [1 - Calorie Counting](exercises/day01/day01.go) | ⭐️      |        |
+| [1 - Calorie Counting](exercises/day01/day01.go) | ⭐️      | ⭐️      |
 | 2 - TBA                                          |        |        |
 | 3 - TBA                                          |        |        |
 | 4 - TBA                                          |        |        |
