@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-func sumCalories(calories []string) (totalCalories int) {
-	total := 0
+func toNumericCalories(calories []string) []int {
+	var numericCalories []int
 
 	for _, calorie := range calories {
 		numericCalorie, parsingError := strconv.Atoi(calorie)
@@ -15,7 +15,17 @@ func sumCalories(calories []string) (totalCalories int) {
 			panic(parsingError)
 		}
 
-		total = total + numericCalorie
+		numericCalories = append(numericCalories, numericCalorie)
+	}
+
+	return numericCalories
+}
+
+func sum(items []int) (totalCalories int) {
+	total := 0
+
+	for _, value := range items {
+		total = total + value
 	}
 
 	return total
@@ -27,9 +37,8 @@ func part1(input string) (result int) {
 	maxCalorieCount := 0
 
 	for _, counter := range mealsPerElf {
-		calories := strings.Split(counter, "\n")
-
-		totalCalories := sumCalories(calories)
+		calories := toNumericCalories(strings.Split(counter, "\n"))
+		totalCalories := sum(calories)
 
 		if maxCalorieCount < totalCalories {
 			maxCalorieCount = totalCalories
