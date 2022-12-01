@@ -1,7 +1,7 @@
 package day1
 
 import (
-	"io/ioutil"
+	"os"
 	"testing"
 )
 
@@ -26,7 +26,7 @@ type testCase struct {
 }
 
 func TestPart1(t *testing.T) {
-	finalInput, err := ioutil.ReadFile("input.txt")
+	finalInput, err := os.ReadFile("input.txt")
 
 	if err != nil {
 		t.Error("Missing final input file.")
@@ -45,7 +45,7 @@ func TestPart1(t *testing.T) {
 }
 
 func TestPart2(t *testing.T) {
-	finalInput, err := ioutil.ReadFile("input.txt")
+	finalInput, err := os.ReadFile("input.txt")
 
 	if err != nil {
 		t.Error("Missing final input file.")
