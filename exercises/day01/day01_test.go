@@ -43,3 +43,24 @@ func TestPart1(t *testing.T) {
 		}
 	}
 }
+
+func TestPart2(t *testing.T) {
+	finalInput, err := ioutil.ReadFile("input.txt")
+
+	if err != nil {
+		t.Error("Missing final input file.")
+	}
+
+	cases := []testCase{
+		{input: exampleInput, expected: 45000},
+		{input: string(finalInput), expected: 209481},
+	}
+
+	for _, v := range cases {
+		result := part2(v.input)
+
+		if result != v.expected {
+			t.Errorf("Expected value %d but received %d", v.expected, result)
+		}
+	}
+}

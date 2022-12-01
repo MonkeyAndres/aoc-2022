@@ -1,24 +1,31 @@
 package day1
 
 import (
+	"sort"
 	"strconv"
 	"strings"
 )
 
-func toNumericCalories(calories []string) []int {
-	var numericCalories []int
+func parseInput(input string) [][]int {
+	var parsedElfMeals [][]int
 
-	for _, calorie := range calories {
-		numericCalorie, parsingError := strconv.Atoi(calorie)
+	for _, elfMeals := range strings.Split(input, "\n\n") {
+		var elfNumericCalories []int
 
-		if parsingError != nil {
-			panic(parsingError)
+		for _, mealCalories := range strings.Split(elfMeals, "\n") {
+			numericCalorie, parsingError := strconv.Atoi(mealCalories)
+
+			if parsingError != nil {
+				panic(parsingError)
+			}
+
+			elfNumericCalories = append(elfNumericCalories, numericCalorie)
 		}
 
-		numericCalories = append(numericCalories, numericCalorie)
+		parsedElfMeals = append(parsedElfMeals, elfNumericCalories)
 	}
 
-	return numericCalories
+	return parsedElfMeals
 }
 
 func sum(items []int) (totalCalories int) {
@@ -32,13 +39,12 @@ func sum(items []int) (totalCalories int) {
 }
 
 func part1(input string) (result int) {
-	mealsPerElf := strings.Split(input, "\n\n")
+	parsedElfMeals := parseInput(input)
 
 	maxCalorieCount := 0
 
-	for _, counter := range mealsPerElf {
-		calories := toNumericCalories(strings.Split(counter, "\n"))
-		totalCalories := sum(calories)
+	for _, elfMeals := range parsedElfMeals {
+		totalCalories := sum(elfMeals)
 
 		if maxCalorieCount < totalCalories {
 			maxCalorieCount = totalCalories
@@ -46,4 +52,19 @@ func part1(input string) (result int) {
 	}
 
 	return maxCalorieCount
+}
+
+func part2(input string) (result int) {
+	parsedElfMeals := parseInput(input)
+
+	var totalElfCalories []int
+
+	for _, elfMeals := range parsedElfMeals {
+		totalCalories := sum(elfMeals)
+		totalElfCalories = append(totalElfCalories, totalCalories)
+	}
+
+	sort.Sort(sort.Reverse(sort.IntSlice(totalElfCalories)))
+
+	return totalElfCalories[0] + totalElfCalories[1] + totalElfCalories[2]
 }
