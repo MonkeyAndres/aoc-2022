@@ -37,10 +37,30 @@ SCORE
 
 */
 
-var SHAPE_VALUE = map[string]int{
-	"X": 1,
-	"Y": 2,
-	"Z": 3,
+func getRoundScore(opponentsMove string, yourMove string) int {
+	var SHAPE_VALUE = map[string]int{
+		"X": 1, // ROCK
+		"Y": 2, // PAPER
+		"Z": 3, // SCISSORS
+	}
+
+	roundScore := 0
+
+	if opponentsMove == "A" && yourMove == "Y" ||
+		opponentsMove == "B" && yourMove == "Z" ||
+		opponentsMove == "C" && yourMove == "X" {
+		roundScore += 6
+	}
+
+	if opponentsMove == "A" && yourMove == "X" ||
+		opponentsMove == "B" && yourMove == "Y" ||
+		opponentsMove == "C" && yourMove == "Z" {
+		roundScore += 3
+	}
+
+	roundScore += SHAPE_VALUE[yourMove]
+
+	return roundScore
 }
 
 func part1(input string) int {
@@ -48,22 +68,78 @@ func part1(input string) int {
 	score := 0
 
 	for _, round := range rounds {
+		roundScore := getRoundScore(round[0], round[1])
+		score += roundScore
+	}
+
+	return score
+}
+
+/**
+
+X - LOSE
+Y - DRAW
+Z - WIN
+
+OPPONENT
+	ROCK (A)
+	PAPER (B)
+	SCISSORS (C)
+
+YOU
+	ROCK (X)
+	PAPER (Y)
+	SCISSORS (Z)
+
+*/
+
+func part2(input string) int {
+	rounds := parseInput(input)
+	score := 0
+
+	var losingMoves = map[string]string{
+		"A": "Z",
+		"B": "X",
+		"C": "Y",
+	}
+
+	var winningMoves = map[string]string{
+		"A": "Y",
+		"B": "Z",
+		"C": "X",
+	}
+
+	var drawMoves = map[string]string{
+		"A": "X",
+		"B": "Y",
+		"C": "Z",
+	}
+
+	for _, round := range rounds {
 		opponentsMove := round[0]
-		yourMove := round[1]
+		yourMove := ""
 
-		if opponentsMove == "A" && yourMove == "Y" ||
-			opponentsMove == "B" && yourMove == "Z" ||
-			opponentsMove == "C" && yourMove == "X" {
-			score += 6
+		roundResult := round[1]
+
+		switch roundResult {
+		case "X":
+			{
+				yourMove = losingMoves[opponentsMove]
+			}
+
+		case "Y":
+			{
+				yourMove = drawMoves[opponentsMove]
+			}
+
+		case "Z":
+			{
+				yourMove = winningMoves[opponentsMove]
+			}
 		}
 
-		if opponentsMove == "A" && yourMove == "X" ||
-			opponentsMove == "B" && yourMove == "Y" ||
-			opponentsMove == "C" && yourMove == "Z" {
-			score += 3
-		}
-
-		score += SHAPE_VALUE[yourMove]
+		roundScore := getRoundScore(opponentsMove, yourMove)
+		score += roundScore
 	}
 
 	return score
