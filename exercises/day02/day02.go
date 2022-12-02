@@ -81,16 +81,6 @@ X - LOSE
 Y - DRAW
 Z - WIN
 
-OPPONENT
-	ROCK (A)
-	PAPER (B)
-	SCISSORS (C)
-
-YOU
-	ROCK (X)
-	PAPER (Y)
-	SCISSORS (Z)
-
 */
 
 func part2(input string) int {
