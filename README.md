@@ -12,30 +12,30 @@ go test -v ./exercises/dayXX
 
 ## Progress
 
-| Kata                                                | Part 1 | Part 2 |
-| --------------------------------------------------- | ------ | ------ |
-| [1 - Calorie Counting](exercises/day01/day01.go)    | ⭐️      | ⭐️      |
-| [2 - Rock Paper Scissors](exercises/day02/day02.go) | ⭐️      | ⭐️      |
-| 3 - TBA                                             |        |        |
-| 4 - TBA                                             |        |        |
-| 5 - TBA                                             |        |        |
-| 6 - TBA                                             |        |        |
-| 7 - TBA                                             |        |        |
-| 8 - TBA                                             |        |        |
-| 9 - TBA                                             |        |        |
-| 10 - TBA                                            |        |        |
-| 11 - TBA                                            |        |        |
-| 12 - TBA                                            |        |        |
-| 13 - TBA                                            |        |        |
-| 14 - TBA                                            |        |        |
-| 16 - TBA                                            |        |        |
-| 15 - TBA                                            |        |        |
-| 17 - TBA                                            |        |        |
-| 18 - TBA                                            |        |        |
-| 19 - TBA                                            |        |        |
-| 20 - TBA                                            |        |        |
-| 21 - TBA                                            |        |        |
-| 22 - TBA                                            |        |        |
-| 23 - TBA                                            |        |        |
-| 24 - TBA                                            |        |        |
-| 25 - TBA                                            |        |        |
+| Kata                                                    | Part 1 | Part 2 |
+| ------------------------------------------------------- | ------ | ------ |
+| [1 - Calorie Counting](exercises/day01/day01.go)        | ⭐️      | ⭐️      |
+| [2 - Rock Paper Scissors](exercises/day02/day02.go)     | ⭐️      | ⭐️      |
+| [3 - Rucksack Reorganization](exercises/day03/day03.go) | ⭐️      | ⭐️      |
+| 4 - TBA                                                 |        |        |
+| 5 - TBA                                                 |        |        |
+| 6 - TBA                                                 |        |        |
+| 7 - TBA                                                 |        |        |
+| 8 - TBA                                                 |        |        |
+| 9 - TBA                                                 |        |        |
+| 10 - TBA                                                |        |        |
+| 11 - TBA                                                |        |        |
+| 12 - TBA                                                |        |        |
+| 13 - TBA                                                |        |        |
+| 14 - TBA                                                |        |        |
+| 16 - TBA                                                |        |        |
+| 15 - TBA                                                |        |        |
+| 17 - TBA                                                |        |        |
+| 18 - TBA                                                |        |        |
+| 19 - TBA                                                |        |        |
+| 20 - TBA                                                |        |        |
+| 21 - TBA                                                |        |        |
+| 22 - TBA                                                |        |        |
+| 23 - TBA                                                |        |        |
+| 24 - TBA                                                |        |        |
+| 25 - TBA                                                |        |        |

@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-func parseRucksacks(input string) (parsedRucksack [][]string) {
+func parseRucksackCompartments(input string) (parsedRucksack [][]string) {
 	for _, rucksack := range strings.Split(input, "\n") {
 		compartmentDelimiter := len(rucksack) / 2
 
@@ -26,7 +26,7 @@ func getItemPriority(item rune) int {
 }
 
 func part1(input string) (prioritySum int) {
-	rucksacks := parseRucksacks(input)
+	rucksacks := parseRucksackCompartments(input)
 
 	for _, rucksack := range rucksacks {
 		firstCompartmentItemsMap := make(map[rune]bool)
@@ -43,6 +43,40 @@ func part1(input string) (prioritySum int) {
 			}
 
 			secondCompartmentItemsMap[item] = true
+		}
+	}
+
+	return
+}
+
+func part2(input string) (prioritySum int) {
+	rucksacks := strings.Split(input, "\n")
+
+	for cursor := 0; cursor < len(rucksacks); cursor += 3 {
+		elvesGroup := rucksacks[cursor : cursor+3]
+
+		firstElfItems := make(map[rune]bool)
+
+		for _, item := range elvesGroup[0] {
+			firstElfItems[item] = true
+		}
+
+		secondAndFirstElfItems := make(map[rune]bool)
+
+		for _, item := range elvesGroup[1] {
+			if firstElfItems[item] && !secondAndFirstElfItems[item] {
+				secondAndFirstElfItems[item] = true
+			}
+		}
+
+		commonToAllItems := make(map[rune]bool)
+
+		for _, item := range elvesGroup[2] {
+			if secondAndFirstElfItems[item] && !commonToAllItems[item] {
+				prioritySum += getItemPriority(item)
+			}
+
+			commonToAllItems[item] = true
 		}
 	}
 
