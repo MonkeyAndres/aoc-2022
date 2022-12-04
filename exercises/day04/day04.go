@@ -55,3 +55,18 @@ func part1(input string) (overlappingJobsCount int) {
 
 	return
 }
+
+func part2(input string) (overlappingJobsCount int) {
+	assignmentPairs := parseInput(input)
+
+	for _, pair := range assignmentPairs {
+		leftPair := pair[0]
+		rightPair := pair[1]
+
+		if leftPair[0] <= rightPair[1] && leftPair[1] >= rightPair[0] {
+			overlappingJobsCount++
+		}
+	}
+
+	return
+}
