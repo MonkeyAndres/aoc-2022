@@ -18,43 +18,35 @@ func parseInput(input string) [][]string {
 	return parsedRounds
 }
 
-/**
+type Shape struct {
+	own      string
+	opponent string
+}
 
-OPPONENT
-	ROCK (A)
-	PAPER (B)
-	SCISSORS (C)
-
-YOU
-	ROCK (X)
-	PAPER (Y)
-	SCISSORS (Z)
-
-SCORE
-	WIN (+6)
-	DRAW (+3)
-	LOSE (+0)
-
-*/
+var (
+	Rock     = Shape{"X", "A"}
+	Paper    = Shape{"Y", "B"}
+	Scissors = Shape{"Z", "C"}
+)
 
 func getRoundScore(opponentsMove string, yourMove string) int {
 	var SHAPE_VALUE = map[string]int{
-		"X": 1, // ROCK
-		"Y": 2, // PAPER
-		"Z": 3, // SCISSORS
+		Rock.own:     1,
+		Paper.own:    2,
+		Scissors.own: 3,
 	}
 
 	roundScore := 0
 
-	if opponentsMove == "A" && yourMove == "Y" ||
-		opponentsMove == "B" && yourMove == "Z" ||
-		opponentsMove == "C" && yourMove == "X" {
+	if opponentsMove == Rock.opponent && yourMove == Paper.own ||
+		opponentsMove == Paper.opponent && yourMove == Scissors.own ||
+		opponentsMove == Scissors.opponent && yourMove == Rock.own {
 		roundScore += 6
 	}
 
-	if opponentsMove == "A" && yourMove == "X" ||
-		opponentsMove == "B" && yourMove == "Y" ||
-		opponentsMove == "C" && yourMove == "Z" {
+	if opponentsMove == Rock.opponent && yourMove == Rock.own ||
+		opponentsMove == Paper.opponent && yourMove == Paper.own ||
+		opponentsMove == Scissors.opponent && yourMove == Scissors.own {
 		roundScore += 3
 	}
 
@@ -88,21 +80,21 @@ func part2(input string) int {
 	score := 0
 
 	var losingMoves = map[string]string{
-		"A": "Z",
-		"B": "X",
-		"C": "Y",
+		Rock.opponent:     Scissors.own,
+		Paper.opponent:    Rock.own,
+		Scissors.opponent: Paper.own,
 	}
 
 	var winningMoves = map[string]string{
-		"A": "Y",
-		"B": "Z",
-		"C": "X",
+		Rock.opponent:     Paper.own,
+		Paper.opponent:    Scissors.own,
+		Scissors.opponent: Rock.own,
 	}
 
 	var drawMoves = map[string]string{
-		"A": "X",
-		"B": "Y",
-		"C": "Z",
+		Rock.opponent:     Rock.own,
+		Paper.opponent:    Paper.own,
+		Scissors.opponent: Scissors.own,
 	}
 
 	for _, round := range rounds {
