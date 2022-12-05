@@ -42,3 +42,26 @@ func TestPart1(t *testing.T) {
 		}
 	}
 }
+
+func TestPart2(t *testing.T) {
+	finalInput, err := os.ReadFile("input.txt")
+
+	if err != nil {
+		t.Error("Missing final input file.")
+	}
+
+	cases := []testCase{
+		{input: exampleInput, expected: "MCD"},
+		{input: string(finalInput), expected: "VRQWPDSGP"},
+	}
+
+	for index, v := range cases {
+		result := part2(v.input)
+
+		if result != v.expected {
+			t.Errorf("Expected value %s but received %s", v.expected, result)
+		} else {
+			t.Logf("Test #%d passed!", index)
+		}
+	}
+}

@@ -18,7 +18,7 @@ go test -v ./exercises/dayXX
 | [2 - Rock Paper Scissors](exercises/day02/day02.go)     | ⭐️      | ⭐️      |
 | [3 - Rucksack Reorganization](exercises/day03/day03.go) | ⭐️      | ⭐️      |
 | [4 - Camp Cleanup](exercises/day04/day04.go)            | ⭐️      | ⭐️      |
-| [5 - Supply Stacks](exercises/day05/day05.go)           | ⭐️      |        |
+| [5 - Supply Stacks](exercises/day05/day05.go)           | ⭐️      | ⭐️      |
 | 6 - TBA                                                 |        |        |
 | 7 - TBA                                                 |        |        |
 | 8 - TBA                                                 |        |        |

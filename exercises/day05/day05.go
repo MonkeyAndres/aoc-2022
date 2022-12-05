@@ -27,6 +27,23 @@ func (s *Stack) Pop() (string, bool) {
 	}
 }
 
+func (s *Stack) PushN(elements []string) {
+	*s = append(*s, elements...)
+}
+
+func (s *Stack) PopN(amount int) ([]string, bool) {
+	if s.IsEmpty() {
+		return []string{}, false
+	} else {
+		index := len(*s) - amount
+		element := (*s)[index:]
+
+		*s = (*s)[:index]
+
+		return element, true
+	}
+}
+
 func reverse(s interface{}) {
 	n := reflect.ValueOf(s).Len()
 	swap := reflect.Swapper(s)
@@ -111,6 +128,35 @@ func part1(input string) (sequence string) {
 			}
 
 			stacks[instruction.to].Push(crate)
+		}
+	}
+
+	// BUILD SEQUENCE
+
+	for stackIndex := range stacks {
+		crate, found := stacks[stackIndex].Pop()
+
+		if found {
+			sequence += crate
+		}
+	}
+
+	return
+}
+
+func part2(input string) (sequence string) {
+	inputParts := strings.Split(input, "\n\n")
+
+	stacks := parseCratesStack(inputParts[0])
+	instructions := parseInstructions(inputParts[1])
+
+	// RUNNER
+
+	for _, instruction := range instructions {
+		crates, found := stacks[instruction.from].PopN(instruction.amount)
+
+		if found {
+			stacks[instruction.to].PushN(crates)
 		}
 	}
 
