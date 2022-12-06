@@ -28,7 +28,7 @@ func TestPart1(t *testing.T) {
 	}
 
 	for index, v := range cases {
-		result := part1(v.input)
+		result := part1(v.input, 4)
 
 		if result != v.expected {
 			t.Errorf("Expected value %d but received %d", v.expected, result)
@@ -38,25 +38,30 @@ func TestPart1(t *testing.T) {
 	}
 }
 
-// func TestPart2(t *testing.T) {
-// 	finalInput, err := os.ReadFile("input.txt")
+func TestPart2(t *testing.T) {
+	finalInput, err := os.ReadFile("input.txt")
 
-// 	if err != nil {
-// 		t.Error("Missing final input file.")
-// 	}
+	if err != nil {
+		t.Error("Missing final input file.")
+	}
 
-// 	cases := []testCase{
-// 		{input: exampleInput, expected: "MCD"},
-// 		{input: string(finalInput), expected: "VRQWPDSGP"},
-// 	}
+	cases := []testCase{
+		{input: "mjqjpqmgbljsphdztnvjfqwrcgsmlb", expected: 19},
+		{input: "bvwbjplbgvbhsrlpgdmjqwftvncz", expected: 23},
+		{input: "nppdvjthqldpwncqszvftbrmjlhg", expected: 23},
+		{input: "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", expected: 29},
+		{input: "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", expected: 26},
 
-// 	for index, v := range cases {
-// 		result := part2(v.input)
+		{input: string(finalInput), expected: 2265},
+	}
 
-// 		if result != v.expected {
-// 			t.Errorf("Expected value %s but received %s", v.expected, result)
-// 		} else {
-// 			t.Logf("Test #%d passed!", index)
-// 		}
-// 	}
-// }
+	for index, v := range cases {
+		result := part1(v.input, 14)
+
+		if result != v.expected {
+			t.Errorf("Expected value %d but received %d", v.expected, result)
+		} else {
+			t.Logf("Test #%d passed!", index)
+		}
+	}
+}
