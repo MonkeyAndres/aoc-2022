@@ -19,7 +19,7 @@ go test -v ./exercises/dayXX
 | [3 - Rucksack Reorganization](exercises/day03/day03.go) | ⭐️      | ⭐️      |
 | [4 - Camp Cleanup](exercises/day04/day04.go)            | ⭐️      | ⭐️      |
 | [5 - Supply Stacks](exercises/day05/day05.go)           | ⭐️      | ⭐️      |
-| 6 - TBA                                                 |        |        |
+| [6 - Tuning Trouble](exercises/day06/day06.go)          | ⭐️      |        |
 | 7 - TBA                                                 |        |        |
 | 8 - TBA                                                 |        |        |
 | 9 - TBA                                                 |        |        |
