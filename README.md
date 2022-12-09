@@ -21,7 +21,7 @@ go test -v ./exercises/dayXX
 | [5 - Supply Stacks](exercises/day05/day05.go)           | ⭐️      | ⭐️      |
 | [6 - Tuning Trouble](exercises/day06/day06.go)          | ⭐️      | ⭐️      |
 | [7 - No Space Left On Device](exercises/day07/day07.go) | ⭐️      | ⭐️      |
-| [8 - Treetop Tree House](exercises/day08/day08.go)      | ⭐️      |        |
+| [8 - Treetop Tree House](exercises/day08/day08.go)      | ⭐️      | ⭐️      |
 | 9 - TBA                                                 |        |        |
 | 10 - TBA                                                |        |        |
 | 11 - TBA                                                |        |        |

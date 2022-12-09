@@ -42,52 +42,64 @@ func parseTreeMap(input string) TreeMap {
 	return TreeMap{grid, width, height}
 }
 
-func (treeMap *TreeMap) isVisibleTop(point Point) bool {
+func (treeMap *TreeMap) isVisibleTop(point Point) (bool, int) {
 	treeHeight := treeMap.grid[point.y][point.x]
+	treesInView := 0
 
 	for y := point.y - 1; y >= 0; y-- {
+		treesInView++
+
 		if treeMap.grid[y][point.x] >= treeHeight {
-			return false
+			return false, treesInView
 		}
 	}
 
-	return true
+	return true, treesInView
 }
 
-func (treeMap *TreeMap) isVisibleBottom(point Point) bool {
+func (treeMap *TreeMap) isVisibleBottom(point Point) (bool, int) {
 	treeHeight := treeMap.grid[point.y][point.x]
+	treesInView := 0
 
 	for y := point.y + 1; y < treeMap.height; y++ {
+		treesInView++
+
 		if treeMap.grid[y][point.x] >= treeHeight {
-			return false
+			return false, treesInView
 		}
 	}
 
-	return true
+	return true, treesInView
 }
 
-func (treeMap *TreeMap) isVisibleLeft(point Point) bool {
+func (treeMap *TreeMap) isVisibleLeft(point Point) (bool, int) {
 	treeHeight := treeMap.grid[point.y][point.x]
+	treesInView := 0
 
 	for x := point.x - 1; x >= 0; x-- {
+		treesInView++
+
 		if treeMap.grid[point.y][x] >= treeHeight {
-			return false
+			return false, treesInView
 		}
 	}
 
-	return true
+	return true, treesInView
 }
 
-func (treeMap *TreeMap) isVisibleRight(point Point) bool {
+func (treeMap *TreeMap) isVisibleRight(point Point) (bool, int) {
 	treeHeight := treeMap.grid[point.y][point.x]
+	treesInView := 0
 
 	for x := point.x + 1; x < treeMap.width; x++ {
+		treesInView++
+
 		if treeMap.grid[point.y][x] >= treeHeight {
-			return false
+			return false, treesInView
 		}
 	}
 
-	return true
+	return true, treesInView
 }
 
 func part1(input string) (visibleTrees int) {
@@ -99,9 +111,36 @@ func part1(input string) (visibleTrees int) {
 		for x := 1; x < treeMap.width-1; x++ {
 			point := Point{x, y}
 
-			if treeMap.isVisibleTop(point) || treeMap.isVisibleBottom(point) ||
-				treeMap.isVisibleLeft(point) || treeMap.isVisibleRight(point) {
+			topVisible, _ := treeMap.isVisibleTop(point)
+			bottomVisible, _ := treeMap.isVisibleBottom(point)
+			leftVisible, _ := treeMap.isVisibleLeft(point)
+			rightVisible, _ := treeMap.isVisibleRight(point)
+
+			if topVisible || bottomVisible || leftVisible || rightVisible {
 				visibleTrees++
+			}
+		}
+	}
+
+	return
+}
+
+func part2(input string) (highestScenicScore int) {
+	treeMap := parseTreeMap(input)
+
+	for y := 1; y < treeMap.height-1; y++ {
+		for x := 1; x < treeMap.width-1; x++ {
+			point := Point{x, y}
+
+			_, topTreesInView := treeMap.isVisibleTop(point)
+			_, bottomTreesInView := treeMap.isVisibleBottom(point)
+			_, leftTreesInView := treeMap.isVisibleLeft(point)
+			_, rightTreesInView := treeMap.isVisibleRight(point)
+
+			scenicScore := topTreesInView * bottomTreesInView * leftTreesInView * rightTreesInView
+
+			if scenicScore > highestScenicScore {
+				highestScenicScore = scenicScore
 			}
 		}
 	}
