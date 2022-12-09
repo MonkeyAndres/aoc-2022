@@ -20,7 +20,7 @@ go test -v ./exercises/dayXX
 | [4 - Camp Cleanup](exercises/day04/day04.go)            | ⭐️      | ⭐️      |
 | [5 - Supply Stacks](exercises/day05/day05.go)           | ⭐️      | ⭐️      |
 | [6 - Tuning Trouble](exercises/day06/day06.go)          | ⭐️      | ⭐️      |
-| [7 - No Space Left On Device](exercises/day07/day07.go) | ⭐️      |        |
+| [7 - No Space Left On Device](exercises/day07/day07.go) | ⭐️      | ⭐️      |
 | 8 - TBA                                                 |        |        |
 | 9 - TBA                                                 |        |        |
 | 10 - TBA                                                |        |        |

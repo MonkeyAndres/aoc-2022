@@ -1,6 +1,7 @@
 package day07
 
 import (
+	"math"
 	"strconv"
 	"strings"
 )
@@ -113,4 +114,42 @@ func part1(input string) int {
 	buildFilesystem(lines, &rootDirectory)
 
 	return sumDeletionCandidates(&rootDirectory, 0)
+}
+
+const TOTAL_DISK_SPACE = 70000000
+const UPDATE_SIZE = 30000000
+
+func part2(input string) int {
+	lines := strings.Split(input, "\n")
+	rootDirectory := Directory{
+		"/",
+		0,
+		nil,
+		ContentTree{make(map[string]File), make(map[string]*Directory)},
+	}
+
+	buildFilesystem(lines, &rootDirectory)
+
+	freeSpace := TOTAL_DISK_SPACE - rootDirectory.size
+	neededSpace := UPDATE_SIZE - freeSpace
+
+	closestDirToNeededSpace := math.MaxInt
+
+	var findClosestDirToNeededSpace func(*Directory)
+	findClosestDirToNeededSpace = func(directory *Directory) {
+		for _, dir := range directory.contents.directories {
+			previousExtraFreeSpace := closestDirToNeededSpace - neededSpace
+			extraFreeSpaceAfterDeletion := dir.size - neededSpace
+
+			if extraFreeSpaceAfterDeletion > 0 && extraFreeSpaceAfterDeletion < previousExtraFreeSpace {
+				closestDirToNeededSpace = dir.size
+			}
+
+			findClosestDirToNeededSpace(dir)
+		}
+	}
+
+	findClosestDirToNeededSpace(&rootDirectory)
+
+	return closestDirToNeededSpace
 }
