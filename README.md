@@ -23,7 +23,7 @@ go test -v ./exercises/dayXX
 | [7 - No Space Left On Device](exercises/day07/day07.go) | ⭐️      | ⭐️      |
 | [8 - Treetop Tree House](exercises/day08/day08.go)      | ⭐️      | ⭐️      |
 | [9 - Rope Bridge](exercises/day09/day09.go)             | ⭐️      | ⭐️      |
-| 10 - TBA                                                |        |        |
+| [10 - Cathode-Ray Tube](exercises/day10/day10.go)       | ⭐️      |        |
 | 11 - TBA                                                |        |        |
 | 12 - TBA                                                |        |        |
 | 13 - TBA                                                |        |        |
