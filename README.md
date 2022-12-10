@@ -22,7 +22,7 @@ go test -v ./exercises/dayXX
 | [6 - Tuning Trouble](exercises/day06/day06.go)          | ⭐️      | ⭐️      |
 | [7 - No Space Left On Device](exercises/day07/day07.go) | ⭐️      | ⭐️      |
 | [8 - Treetop Tree House](exercises/day08/day08.go)      | ⭐️      | ⭐️      |
-| [9 - Rope Bridge](exercises/day09/day09.go)             | ⭐️      |        |
+| [9 - Rope Bridge](exercises/day09/day09.go)             | ⭐️      | ⭐️      |
 | 10 - TBA                                                |        |        |
 | 11 - TBA                                                |        |        |
 | 12 - TBA                                                |        |        |
