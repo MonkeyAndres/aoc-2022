@@ -24,7 +24,7 @@ go test -v ./exercises/dayXX
 | [8 - Treetop Tree House](exercises/day08/day08.go)      | ⭐️      | ⭐️      |
 | [9 - Rope Bridge](exercises/day09/day09.go)             | ⭐️      | ⭐️      |
 | [10 - Cathode-Ray Tube](exercises/day10/day10.go)       | ⭐️      |        |
-| 11 - TBA                                                |        |        |
+| [11 - Monkey in the Middle](exercises/day11/day11.go)   | ⭐️      |        |
 | 12 - TBA                                                |        |        |
 | 13 - TBA                                                |        |        |
 | 14 - TBA                                                |        |        |
